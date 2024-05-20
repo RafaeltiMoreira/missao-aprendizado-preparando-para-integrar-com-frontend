@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const { connectToDatabase } = require('./db/database-connection');
+const cors = require('cors');
 
 const personagemRouter = require('./personagem/personagem.router');
 
@@ -9,6 +10,7 @@ async function main() {
 
     const app = express()
     app.use(express.json())
+    app.use(cors())
 
     app.get('/', function (req, res) {
         res.send('Hello World!')
